@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 2022_05_30_195357) do
 
   create_table "items", force: :cascade do |t|
     t.bigint "owner_id", null: false
+    t.string "name"
     t.string "image"
+    t.string "item_type"
+    t.integer "price_per_day"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
