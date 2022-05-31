@@ -1,0 +1,29 @@
+.main-item-card {
+    height: 60vh;
+}
+
+.main-item-card-img {
+    height: 45vh;
+    text-align: center;
+    border-radius: 3.5vh;
+}
+
+.main-item-card-text-container {
+    text-align: center;
+}
+.main-item-card-text-container-justify-left {
+    display: inline-block;
+    text-align: left;
+}
+
+.main-item-card h1 {
+    font-size: 3vh;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.main-item-card p{
+    font-size: 2vh;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}

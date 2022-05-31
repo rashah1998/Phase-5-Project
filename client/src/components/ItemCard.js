@@ -1,6 +1,8 @@
+import {Link} from 'react-router-dom'
+import '../styles/ItemCard.css'
 
 function ItemCard({item}) {
-    const {owner, name, image, price_per_day, availabilities} = item;
+    const {id, owner, name, image, price_per_day, availabilities} = item;
     const {city, state} = owner;
 
     const nextAvailableDate = function(availabilities) {
@@ -18,12 +20,18 @@ function ItemCard({item}) {
     }
 
     return(
-        <div id='main-item-card'>
-            <img src={image} alt={name}/>
-            <h1>{name}</h1>
-            <h2>Owner's Location: {city}, {state}</h2>
-            <h3>Availability: {nextAvailableDate(availabilities)}</h3>
-            <h2>${price_per_day}/day</h2>
+        <div className='main-item-card'>
+            <Link to={`items/${id}`}>
+                <img src={image} alt={name} className='main-item-card-img'/>
+                <div className='main-item-card-text-container'>
+                    <div className='main-item-card-text-container-justify-left'>
+                        <h1>{name}</h1>
+                        <p>Owner's Location: {city}, {state}</p>
+                        <p>Next Availability: {nextAvailableDate(availabilities)}</p>
+                        <p>${price_per_day}/day</p>
+                    </div>
+                </div>
+            </Link>
         </div>
     )
 }
