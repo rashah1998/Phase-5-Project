@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import ApprovedRental from './ApprovedRental'
 import RequestedRental from './RequestedRental'
+import Rental from './Rental'
 
 function MyRentals({user}) {
 
@@ -24,14 +25,11 @@ function MyRentals({user}) {
         })
     }, [user.id, rerender])
 
-    const renderMyRentals = 0
-
-    function handleReceivedByOwner(id) {
-
-    }
+    const renderMyRentals = myRentals.map(rental => {
+        return(<Rental key={rental.id} rental={rental}/>)
+    })
 
     let rentingFromMeArray = []
-
     myItems.forEach(item => {
         console.log('rentals: ')
         console.log(rentingFromMeArray)
@@ -51,7 +49,7 @@ function MyRentals({user}) {
             )
         } else {
             return(
-                <ApprovedRental key={rental.id} rental={rental} rerender={rerender} setRerender={setRerender}/>
+                <ApprovedRental key={rental.id} rental={rental} rerender={rerender} setRerender={setRerender} user={user}/>
             )
         }
     })
@@ -61,6 +59,8 @@ function MyRentals({user}) {
             <h1>Items I am Renting:</h1>
             <div>
                 {renderMyRentals}
+                {console.log('my rentals:')}
+                {console.log(myRentals)}
             </div>
             <h1>Items People are Renting from Me:</h1>
             <div>
