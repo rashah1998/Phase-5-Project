@@ -9,5 +9,9 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "@amir04lm26/react-modern-calendar-date-picker": "^1.0.1",
+    "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7"
   }
 }

@@ -62,9 +62,9 @@ function SignUp({setUser, setIsAuthenticated}) {
                         <p>Username</p>
                         <input type="text" id="username-signup" name='username' placeholder="Enter Username" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
                         <p>Password</p>
-                        <input type="password" id="password-signup" name='password' placeholder="Enter Password" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <input type="password" className="password-signup" name='password' placeholder="Enter Password" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
                         <p>Re-enter Password</p>
-                        <input type="password" id="password-signup" placeholder="Enter Password" onChange={e => setConfirmPassword(e.target.value)} required></input>
+                        <input type="password" className="password-signup" placeholder="Enter Password" onChange={e => setConfirmPassword(e.target.value)} required></input>
                         <br></br>
                         <input type="submit" id="submit-signup" value="Sign Up"></input>
                         <br/>

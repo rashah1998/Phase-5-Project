@@ -6,6 +6,8 @@ import FilterBar from './FilterBar';
 import Login from './Login';
 import SignUp from './SignUp';
 import ItemPage from './ItemPage';
+import MyItems from './MyItems';
+import MyRentals from './MyRentals';
 import '../styles/App.css';
 
 function App() {
@@ -47,6 +49,12 @@ function App() {
         </Route>
         <Route path='/items/:id'>
           <ItemPage user={user}/>
+        </Route>
+        <Route path='/my_items'>
+          <MyItems />
+        </Route>
+        <Route path='/my_rentals'>
+          <MyRentals user={user}/>
         </Route>
       </Switch>
     </div>

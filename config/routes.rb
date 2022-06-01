@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get '/users/:id', to: 'users#show_rentals'
+
   resources :reviews
   resources :availabilities
   resources :rentals

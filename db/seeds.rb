@@ -23,7 +23,7 @@ i7 = Item.create(owner: u5, name: 'K2 XL Helmet', image: 'https://playitagainspo
 i8 = Item.create(owner: u6, name: 'Salomon Board for Powder Days', image: 'https://i.ebayimg.com/images/g/QVoAAOSw0j5d7cNz/s-l500.jpg', item_type: 'snowboard', price_per_day: 85, description: 'The perfect snowboard for a fresh powder day! Size 160, comes with Large bindings and size 11 boots (if needed).')
 
 puts 'Creating Availabilities...'
-a1 = Availability.create(item: i1, start_date: '2022-08-31', end_date: '2023-03-15')
+a1 = Availability.create(item: i1, start_date: '2022-05-25', end_date: '2023-03-15')
 a2 = Availability.create(item: i2, start_date: '2022-10-31', end_date: '2023-03-31')
 a3 = Availability.create(item: i3, start_date: '2023-01-18', end_date: '2023-05-31')
 a4 = Availability.create(item: i4, start_date: '2022-09-12', end_date: '2023-10-31')
@@ -31,5 +31,8 @@ a5 = Availability.create(item: i5, start_date: '2022-09-30', end_date: '2023-04-
 a6 = Availability.create(item: i6, start_date: '2022-08-15', end_date: '2023-02-28')
 a7 = Availability.create(item: i7, start_date: '2022-09-05', end_date: '2023-03-31')
 a9 = Availability.create(item: i8, start_date: '2022-08-31', end_date: '2023-04-30')
+
+puts 'Creating Rentals...'
+r1 = Rental.create(item: i1, renter: u3, start_date: '2022-06-01', end_date: '2022-06-03', was_returned_to_owner: false, was_received_by_owner: false, pending_approval: true)
 
 puts 'Done Seeding!'

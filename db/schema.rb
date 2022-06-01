@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2022_05_30_195357) do
     t.bigint "renter_id", null: false
     t.string "start_date"
     t.string "end_date"
+    t.boolean "was_returned_to_owner"
+    t.boolean "was_received_by_owner"
+    t.boolean "pending_approval"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_rentals_on_item_id"

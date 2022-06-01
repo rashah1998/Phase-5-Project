@@ -28,7 +28,9 @@ function Nav() {
             <div id='dropdown'>
                 <ul>
                     <Link to='/login'><li>Login</li></Link>
-                    <Link to='/signup'><li>Sign up</li></Link>
+                    <Link to='/signup'><li>Sign Up</li></Link>
+                    <Link to='/my_items'><li>My Items</li></Link>
+                    <Link to='/my_rentals'><li>My Rentals</li></Link>
                 </ul>
             </div> : null}
         </nav>

@@ -4,6 +4,11 @@ class UsersController < ApplicationController
         render json: current_user
     end
 
+    def show_rentals
+        current_user = User.find(session[:current_user])
+        render json: current_user, serializer: UserWithRentalsSerializer
+    end
+
     def create
         if User.exists?(username: params[:username])
             render json: {error: 'Username not available. Try a different username.'}, status: :not_acceptable 
