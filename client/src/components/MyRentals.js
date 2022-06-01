@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react'
+import ApprovedRental from './ApprovedRental'
+import RequestedRental from './RequestedRental'
 
 function MyRentals({user}) {
 
@@ -24,25 +26,8 @@ function MyRentals({user}) {
 
     const renderMyRentals = 0
 
-    function handleApproval(id) {
-        fetch(`/rentals/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accepts': 'application/json'
-            },
-            body: JSON.stringify({pending_approval: false})
-        }).then(res => res.json())
-        .then(() => setRerender(!rerender))
-    }
-
-    function handleRejection(id) {
-        fetch(`/rentals/${id}`, {method: 'DELETE'})
-        .then(() => setRerender(!rerender))
-    }
-
     function handleReceivedByOwner(id) {
-        
+
     }
 
     let rentingFromMeArray = []
@@ -62,24 +47,11 @@ function MyRentals({user}) {
     const renderRentingFromMe = rentingFromMeArray.map(rental => {
         if(rental.pending_approval || rental.pending_approval === null) {
             return(
-                <div key={rental.id}>
-                    <h2>{rental.item.name}</h2>
-                    <h3>{rental.start_date} - {rental.end_date}</h3>
-                    <h3>Rental Requestor: {rental.renter.first_name} {rental.renter.last_name} </h3>
-                    <h3>Avg. Renter Rating: {rental.renter.rating}/5</h3>
-                    <button onClick={() => handleApproval(rental.id)}>Approve Request</button>
-                    <button onClick={() => handleRejection(rental.id)}>Reject Request</button>
-                </div>
+                <RequestedRental key={rental.id} rental={rental} rerender={rerender} setRerender={setRerender}/>
             )
         } else {
             return(
-                <div key={rental.id}>
-                    <h2>{rental.item.name}</h2>
-                    <h3>{rental.start_date} - {rental.end_date}</h3>
-                    <h3>Rental Requestor: {rental.renter.first_name} {rental.renter.last_name} </h3>
-                    <h3>Avg. Renter Rating: {rental.renter.rating}/5</h3>
-                    <button onClick={() => handleReceivedByOwner(rental.id)}>Received Item Back from Renter</button>
-                </div>
+                <ApprovedRental key={rental.id} rental={rental} rerender={rerender} setRerender={setRerender}/>
             )
         }
     })
