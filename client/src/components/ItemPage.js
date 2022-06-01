@@ -52,7 +52,9 @@ function ItemPage({user}) {
                         end_date,
                         item_id: item.id,
                         renter_id: user.id,
-                        pending_approval: true
+                        pending_approval: true,
+                        was_returned_to_owner: false,
+                        was_received_by_owner: false
                     })
                 }
 
@@ -61,7 +63,7 @@ function ItemPage({user}) {
                     if(res.ok) {
                         res.json()
                         .then(() => {
-                            history.push("/myrentals")
+                            history.push("/my_rentals")
                         })
                     } else {
                         res.json()
