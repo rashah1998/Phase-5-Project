@@ -26,7 +26,7 @@ function MyRentals({user}) {
     }, [user.id, rerender])
 
     const renderMyRentals = myRentals.map(rental => {
-        return(<Rental key={rental.id} rental={rental}/>)
+        return(<Rental key={rental.id} rental={rental} rerender={rerender} setRerender={setRerender} user={user}/>)
     })
 
     let rentingFromMeArray = []

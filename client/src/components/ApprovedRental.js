@@ -9,7 +9,6 @@ function ApprovedRental({rental, user, rerender, setRerender}) {
     //data needed for reviews: reviewee_id(User that review is about), reviewer_id (review author), rating, content
 
     function handleReceivedByOwner() {
-        console.log('received_check_1:' + rental.was_received_by_owner)
         if(!rental.was_received_by_owner) {
             setShowReviewForm(true)
         } else {
@@ -17,39 +16,38 @@ function ApprovedRental({rental, user, rerender, setRerender}) {
         }
     }
 
+    if(rental.was_returned_to_owner && rental.was_received_by_owner) {
+        fetch(`/rentals/${rental.id}`, {method: 'DELETE'})
+        .then(() => setRerender(!rerender))
+    }
+
     function handleSubmitReview(e) {
         e.preventDefault()
-        console.log('received_check_2:' + rental.was_received_by_owner)
-        if(!rental.was_received_by_owner) {
-            fetch('/reviews', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accepts': 'application/json'
-                },
-                body: JSON.stringify({
-                    reviewer_id: user.id,
-                    reviewee_id: rental.renter.id,
-                    rating,
-                    content
-                })
+        fetch('/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({
+                reviewer_id: user.id,
+                reviewee_id: rental.renter.id,
+                rating,
+                content
             })
+        })
 
-            fetch(`/rentals/${rental.id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accepts': 'application/json'
-                },
-                body: JSON.stringify({was_received_by_owner: true})
-            })
+        fetch(`/rentals/${rental.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({was_received_by_owner: true})
+        })
 
-            setShowReviewForm(false)
-            setRerender(!rerender)
-
-        } else {
-            setError('You have already submitted a review for this experience.')
-        }
+        setShowReviewForm(false)
+        setRerender(!rerender)
     }
 
     return (
@@ -57,7 +55,7 @@ function ApprovedRental({rental, user, rerender, setRerender}) {
             <h2>{rental.item.name}</h2>
             <h3>{rental.start_date} - {rental.end_date}</h3>
             <h3>Rental Requestor: {rental.renter.first_name} {rental.renter.last_name} </h3>
-            <h3>Avg. Renter Rating: {rental.renter.rating}/5</h3>
+            <h3>Avg. Renter Rating: {(Math.round(rental.renter.rating * 100) / 100).toFixed(2)}/5</h3>
             <button onClick={() => handleReceivedByOwner()}>Received Item Back from Renter</button>
             <div>
                 {showReviewForm ? 

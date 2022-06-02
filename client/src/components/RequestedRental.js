@@ -23,7 +23,7 @@ function RequestedRental({rental, rerender, setRerender}) {
             <h2>{rental.item.name}</h2>
             <h3>{rental.start_date} - {rental.end_date}</h3>
             <h3>Rental Requestor: {rental.renter.first_name} {rental.renter.last_name} </h3>
-            <h3>Avg. Renter Rating: {rental.renter.rating}/5</h3>
+            <h3>Avg. Renter Rating: {(Math.round(rental.renter.rating * 100) / 100).toFixed(2)}/5</h3>
             <button onClick={() => handleApproval(rental.id)}>Approve Request</button>
             <button onClick={() => handleRejection(rental.id)}>Reject Request</button>
         </div>

@@ -12,6 +12,7 @@ function ItemPage({user}) {
     const [item, setItem] = useState({})
     const [availabilities, setAvailabilities] = useState([])
     const [rentals, setRentals] = useState([])
+    const [owner, setOwner] = useState({})
     const [rentalDates, setRentalDates] = useState({
         from: null,
         to: null
@@ -28,6 +29,7 @@ function ItemPage({user}) {
             setItem(itemData)
             setAvailabilities(itemData.availabilities)
             setRentals(itemData.rentals)
+            setOwner(itemData.owner)
         })
     }, [id])
 
@@ -107,11 +109,13 @@ function ItemPage({user}) {
             <div id='item-page-content'>
                 <h1>{item.name}</h1>
                 <p>{item.description}</p>
-                <p>User's Availability to Rent this Item:</p>
+                <p>Owned by: {owner.first_name} {owner.last_name}</p>
+                <p>Owner rating: {(Math.round(owner.rating * 100) / 100).toFixed(2)}/5</p>
+                <h3>User's Availability to Rent this Item:</h3>
                 <ul>
                     {availabilities.length === 0 ? <li>Sorry, this item is unavailable right now.</li> : renderAvailabilities}
                 </ul>
-                <p>Existing Rentals for this Item:</p>
+                <h3>Existing Rentals for this Item:</h3>
                 <ul>
                     {rentals.length === 0 ? <li>No active rentals. Be the first to rent this item!</li> : renderRentals}
                 </ul>
