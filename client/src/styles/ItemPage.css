@@ -1,0 +1,58 @@
+#item-page {
+    min-height: 90.9vh;
+}
+
+#item-page img {
+    height: 45vh;
+    border-radius: 3.5vh;
+}
+
+#item-page-content {
+    text-align: left;
+    padding-left: 10vw;
+}
+
+#item-page-content li{
+    list-style-type: none;
+}
+
+#item-page-content li::before{
+    content: "\00BB";
+}
+
+#item-page-booking {
+    position: fixed;
+    left: 31%;
+    top: 73.5%;
+}
+
+#item-page-booking input {
+    border-radius: 10px;
+    height: 2.5vh;
+    width: 20vh;
+    margin-right: 1vh;
+}
+
+#item-page-rent-button {
+    background-color: rgb(92, 209, 238);
+    height: 3.5vh;
+    width: 13vh;
+    border-radius: 5px;
+}
+
+#item-page-rent-button:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px gray;
+}
+
+#item-page-cannot-rent-button {
+    background-color: rgb(92, 209, 238);
+    height: 3.5vh;
+    width: 12vh;
+    border-radius: 5px;
+}
+
+#item-page-cannot-rent-button:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px gray;
+}

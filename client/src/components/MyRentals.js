@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import ApprovedRental from './ApprovedRental'
 import RequestedRental from './RequestedRental'
 import Rental from './Rental'
+import '../styles/MyRentals.css'
 
 function MyRentals({user}) {
 
@@ -55,17 +56,15 @@ function MyRentals({user}) {
     })
 
     return(
-        <div>
-            <h1>Items I am Renting:</h1>
-            <div>
-                {renderMyRentals}
-                {console.log('my rentals:')}
-                {console.log(myRentals)}
+        <div id='rentals-page'>
+            <h1>My Rentals:</h1>
+            <div className='rentals-container'>
+                {myRentals.length === 0 ? <p className='no-rentals'>No rentals yet! Rent something to get started!</p> : renderMyRentals}
             </div>
-            <h1>Items People are Renting from Me:</h1>
-            <div>
-                {myItems.length === 0 ? <p>{"You don't have any items available to rent."}</p>
-                : (rentingFromMe ?  renderRentingFromMe : <p>No rentals for your items yet.</p>)}
+            <h1>Rentals for My Items:</h1>
+            <div className='rentals-container'>
+                {myItems.length === 0 ? <p className='no-rentals'>{"You don't have any items available to rent."}</p>
+                : (rentingFromMe ?  renderRentingFromMe : <p className='no-rentals'>No rentals for your items yet.</p>)}
             </div>
         </div>
     )

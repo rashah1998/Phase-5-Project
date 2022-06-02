@@ -31,10 +31,11 @@ function Nav({user, setUser, setIsAuthenticated}) {
 
     return(
         <nav>
-            <Link to='/' id='site-name' className='nav-link'><h1>Rent a Snow Day</h1></Link>
+            <Link to='/' id='site-name' className='nav-link'><h1 id='site-name-h1'>Rent a Snow Day</h1></Link>
             {user ?
-            <div>
-                <Link to='/' onClick={handleLogout} className='nav-link' id='logout-link'><span>Log Out</span></Link>
+            <div id='logged-in-nav'>
+                <h1>Welcome, {user.first_name}</h1>
+                <a onClick={handleLogout} className='nav-link' id='logout-link'><span>Log Out</span></a>
                 <button onClick={setShowMenuTrue} id='dropdown-button'>☰</button>
                 {showMenu ? 
                 <div id='dropdown'>

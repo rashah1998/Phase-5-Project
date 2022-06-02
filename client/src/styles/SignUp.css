@@ -1,9 +1,13 @@
 #signup-container {
     min-height: 90.9vh;
+    background-image: url('../resort-background-image.JPG');
+    background-size: cover;
 }
 
 #signup-title {
-    margin-top: 3vh;
+    padding-top: 3vh;
+    margin-top: 0;
+    text-shadow: 1.2px 0 0 #000, 0 -1.2px 0 #000, 0 1.2px 0 #000, -1.2px 0 0 #000;
 }
 
 #signup-form {

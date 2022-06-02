@@ -27,3 +27,10 @@
     margin-top: 1px;
     margin-bottom: 1px;
 }
+
+.main-item-card a {
+    color: white;
+}
+.main-item-card > *:hover {
+    text-decoration: underline;
+}

@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
+import '../styles/ItemPage.css'
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from 'react-modern-calendar-datepicker';
 
@@ -32,6 +33,10 @@ function ItemPage({user}) {
             setOwner(itemData.owner)
         })
     }, [id])
+
+    function redirectLogin(){
+        history.push('/login')
+    }
 
     function handleNewRentalRequest() {
         const start_date = rentalDates.from.year+'-'+rentalDates.from.month+'-'+rentalDates.from.day
@@ -109,8 +114,10 @@ function ItemPage({user}) {
             <div id='item-page-content'>
                 <h1>{item.name}</h1>
                 <p>{item.description}</p>
-                <p>Owned by: {owner.first_name} {owner.last_name}</p>
-                <p>Owner rating: {(Math.round(owner.rating * 100) / 100).toFixed(2)}/5</p>
+                <p>Owner: {owner.first_name} {owner.last_name}, Located in: {owner.city}, {owner.state}</p>
+                {owner.rating === 0 ? <p>Owner Rating: {owner.first_name} has not been rated yet.</p> 
+                    : <p>Owner Rating: {(Math.round(owner.rating * 100) / 100).toFixed(2)}/5</p>
+                }
                 <h3>User's Availability to Rent this Item:</h3>
                 <ul>
                     {availabilities.length === 0 ? <li>Sorry, this item is unavailable right now.</li> : renderAvailabilities}
@@ -122,8 +129,9 @@ function ItemPage({user}) {
             </div>
             <div id='item-page-booking'>
                 <h2>Rent Now:</h2>
-                <DatePicker value={rentalDates} onChange={setRentalDates} inputPlaceholder={'Select Your Pick-Up and Return Dates'}/>
-                {user ? <button id='item-page-rent-button' onClick={handleNewRentalRequest}>Submit Request for Rental</button>: <button id='item-page-cannot-rent-button'>Log In to Rent</button>}
+                <DatePicker value={rentalDates} onChange={setRentalDates} inputPlaceholder={'Select Dates for Rental'} colorPrimary={'rgb(92, 209, 238)'} colorPrimaryLight={'rgb(92, 209, 238,0.3)'}/>
+                {user ? <button id='item-page-rent-button' onClick={handleNewRentalRequest}>Request Rental</button>
+                : <button id='item-page-cannot-rent-button' onClick={redirectLogin}>Log In to Rent</button>}
                 {error ? <p>{error}</p> : null}
             </div>
         </div>

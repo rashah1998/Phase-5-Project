@@ -51,21 +51,21 @@ function Rental({rental, user, rerender, setRerender}) {
     }
 
     return(
-        <div key={rental.id}>
+        <div className='my-rental-item' key={rental.id}>
             <h2>{rental.item.name}</h2>
-            <h3>{rental.start_date} - {rental.end_date}</h3>
-            <h3>Rental Owner: {rental.item.owner.first_name} {rental.item.owner.last_name} </h3>
-            <h3>Avg. Renter Rating: {(Math.round(rental.item.owner.rating * 100) / 100).toFixed(2)}/5</h3>
+            <h3>Rental Dates: {rental.start_date} - {rental.end_date}</h3>
+            <h3>Owner: {rental.item.owner.first_name} {rental.item.owner.last_name} </h3>
+            <h3>Owner Rating: {(Math.round(rental.item.owner.rating * 100) / 100).toFixed(2)}/5</h3>
             {rental.pending_approval || rental.pending_approval === null ?
-            <button>Rental Pending Owner's Approval</button> : 
-            <button onClick={() => handleReturnedToOwner()}>Returned Item Back to Owner</button>}
+            <button className='pending-approval-button'>Rental Pending Owner's Approval</button> : 
+            <button onClick={() => handleReturnedToOwner()} className='received-returned-button'>Returned Item Back to Owner</button>}
             <div>
                 {showReviewForm ? 
                     <form onSubmit={(e) => handleSubmitReview(e)}>
-                        <label htmlFor='rating'>Rate the Renter (out of 5):</label>
-                        <input name='rating' type='number' min='1' max='5' onChange={(e) => setRating(e.target.value)}required></input>
-                        <input type='text' placeholder='Provide any additional feedback about the renter here.' onChange={(e) => setContent(e.target.value)}required></input>
-                        <input type='submit'></input>
+                        <label htmlFor='rating' className='rating-label'>Rate the Owner (out of 5):</label>
+                        <input name='rating' className='rating-input' type='number' min='1' max='5' onChange={(e) => setRating(e.target.value)}required></input>
+                        <input type='text' className='content-input' placeholder='Provide any additional feedback here.' onChange={(e) => setContent(e.target.value)}required></input>
+                        <input type='submit' className="submit-review-button" value='Submit Review'></input>
                     </form> : null}
                     {error ? <p>{error}</p>: null}
             </div>

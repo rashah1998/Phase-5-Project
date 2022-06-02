@@ -28,7 +28,7 @@ function Login({user, setUser, setIsAuthenticated}){
                 .then(user => {
                     setUser(user)
                     setIsAuthenticated(true)
-                    history.push("/")
+                    history.goBack()                    
                     e.target.reset()
                 })
             } else {

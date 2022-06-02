@@ -51,19 +51,19 @@ function ApprovedRental({rental, user, rerender, setRerender}) {
     }
 
     return (
-        <div key={rental.id}>
+        <div key={rental.id} className='my-rental-item'>
             <h2>{rental.item.name}</h2>
-            <h3>{rental.start_date} - {rental.end_date}</h3>
-            <h3>Rental Requestor: {rental.renter.first_name} {rental.renter.last_name} </h3>
-            <h3>Avg. Renter Rating: {(Math.round(rental.renter.rating * 100) / 100).toFixed(2)}/5</h3>
-            <button onClick={() => handleReceivedByOwner()}>Received Item Back from Renter</button>
+            <h3>Dates: {rental.start_date} - {rental.end_date}</h3>
+            <h3>Renter: {rental.renter.first_name} {rental.renter.last_name} </h3>
+            <h3>Renter Rating: {(Math.round(rental.renter.rating * 100) / 100).toFixed(2)}/5</h3>
+            <button onClick={() => handleReceivedByOwner()} className='received-returned-button'>Received Item Back from Renter</button>
             <div>
                 {showReviewForm ? 
                     <form onSubmit={(e) => handleSubmitReview(e)}>
-                        <label htmlFor='rating'>Rate the Renter (out of 5):</label>
-                        <input name='rating' type='number' min='1' max='5' onChange={(e) => setRating(e.target.value)}required></input>
-                        <input type='text' placeholder='Provide any additional feedback about the renter here.' onChange={(e) => setContent(e.target.value)}required></input>
-                        <input type='submit'></input>
+                        <label htmlFor='rating' className='rating-label'>Rate the Renter (out of 5):</label>
+                        <input name='rating' className='rating-input' type='number' min='1' max='5' onChange={(e) => setRating(e.target.value)}required></input>
+                        <input type='text' className='content-input' placeholder='Provide any additional feedback here.' onChange={(e) => setContent(e.target.value)}required></input>
+                        <input type='submit' className="submit-review-button" value='Submit Review'></input>
                     </form> : null}
                     {error ? <p>{error}</p>: null}
             </div>

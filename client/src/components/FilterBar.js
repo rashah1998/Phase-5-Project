@@ -1,5 +1,6 @@
 // import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 // import DatePicker from 'react-modern-calendar-datepicker';
+import '../styles/FilterBar.css'
 
 function FilterBar({setFilterItemType}) {
 
@@ -8,12 +9,12 @@ function FilterBar({setFilterItemType}) {
     }
 
     return(
-        <div className='filter-bar'>
-            <label htmlFor='item-type'>Filter by Item Type: </label>
+        <div id='filter-bar'>
+            <label htmlFor='item-type'>Item Type: </label>
             <select name='item-type' onChange={handleSubmitItemType}>
                 <option value=''>All Types</option>
                 <option value='snowboard'>Snowboard</option>
-                <option value='ski'>Ski</option>
+                <option value='ski'>Skis</option>
                 <option value='equipment'>Equipment</option>
             </select>
         </div>

@@ -1,0 +1,14 @@
+#filter-bar {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+#filter-bar label {
+    font-size: 20px;
+}
+
+#filter-bar select {
+    font-size: 18px;
+    border-radius: 5px;
+}
+
