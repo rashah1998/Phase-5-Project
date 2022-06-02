@@ -1,0 +1,50 @@
+#signup-container {
+    min-height: 90.9vh;
+}
+
+#signup-title {
+    margin-top: 3vh;
+}
+
+#signup-form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    margin-top: 1vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    color: black;
+    box-shadow: 2px 2px gray;
+}
+
+#signup-form input[type='text'], input[type='password'] {
+    border-radius: 5px;
+    border-color: rgb(214, 209, 209);
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+#submit-signup {
+    background-color: rgb(92, 209, 238);
+    height: 4vh;
+    width: 9vh;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+}
+
+#submit-signup:hover {
+   cursor: pointer;
+   box-shadow: 1px 1px gray;
+}
+
+#signup-error {
+    margin-top: 0;
+    margin-bottom: 2vh;
+}
+
+#signup-form a {
+    color: black;
+    padding-top: 5px;
+}

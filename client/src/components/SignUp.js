@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import '../styles/SignUp.css'
 
 function SignUp({setUser, setIsAuthenticated}) {
@@ -47,28 +47,29 @@ function SignUp({setUser, setIsAuthenticated}) {
         }
     }
     return(
-        <div id="signup-box">
-            <h1>Sign Up</h1>
-                <form onSubmit={(e) => submitHandler(e)}>
+        <div id="signup-container">
+            <h1 id='signup-title'>Create an Account</h1>
+                <form onSubmit={(e) => submitHandler(e)} id='signup-form'>
                     <div>
-                        <p>First Name</p>
-                        <input type="text" id="firstname-signup" name='first_name' placeholder="Enter First Name" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>Last Name</p>
-                        <input type="text" id="lastname-signup" name='last_name' placeholder="Enter Last Name" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>City</p>
-                        <input type="text" id="city-signup" name='city' placeholder="Enter Your City" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>State</p>
-                        <input type="text" id="state-signup" name='state' placeholder="Enter Your State" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>Username</p>
-                        <input type="text" id="username-signup" name='username' placeholder="Enter Username" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>Password</p>
-                        <input type="password" className="password-signup" name='password' placeholder="Enter Password" onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
-                        <p>Re-enter Password</p>
-                        <input type="password" className="password-signup" placeholder="Enter Password" onChange={e => setConfirmPassword(e.target.value)} required></input>
+                        <label htmlFor='first_name'>First Name</label>
+                        <input type="text" id="firstname-signup" name='first_name' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='last_name'>Last Name</label>
+                        <input type="text" id="lastname-signup" name='last_name' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='city'>City</label>
+                        <input type="text" id="city-signup" name='city' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='state'>State</label>
+                        <input type="text" id="state-signup" name='state' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='username'>Username</label>
+                        <input type="text" id="username-signup" name='username' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='password'>Password</label>
+                        <input type="password" className="password-signup" name='password' onChange={e => setSignUpParams({...signUpParams, [e.target.name]: e.target.value})} required></input>
+                        <label htmlFor='password-confirmation'>Re-enter Password</label>
+                        <input type="password" className="password-signup" name='password-confirmation' onChange={e => setConfirmPassword(e.target.value)} required></input>
                         <br></br>
                         <input type="submit" id="submit-signup" value="Sign Up"></input>
                         <br/>
-                        {error ? <p>{error}</p> : null}
+                        {error ? <p id='signup-error'>{error}</p> : null}
+                        <Link to='/login' id='signup-to-login-link'>Have an account? Click here to log in!</Link>
                     </div>
                 </form>
         </div>

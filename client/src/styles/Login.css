@@ -1,0 +1,50 @@
+#login-container {
+    min-height: 85.9vh;
+}
+
+#login-title {
+    margin-top: 3vh;
+}
+
+#login-form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    margin-top: 1vh;
+    padding-top: 3vh;
+    padding-bottom: 4vh;
+    color: black;
+}
+
+#username-login, #password-login {
+    border-radius: 5px;
+    border-color: rgb(214, 209, 209);
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+#submit-login {
+    background-color: rgb(92, 209, 238);
+    height: 4vh;
+    width: 9vh;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+}
+
+#submit-login:hover {
+   cursor: pointer;
+   box-shadow: 1px 1px gray;
+}
+
+#login-error {
+    margin-top: 0;
+    margin-bottom: 2vh;
+}
+
+#login-form a {
+    color: black;
+    padding-top: 5px;
+}
+

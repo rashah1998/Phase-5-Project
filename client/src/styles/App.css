@@ -1,4 +1,8 @@
 .App {
   text-align: center;
+  background-color: rgb(92, 209, 238);
+  color: white;
+  /* background-image: url('../resort-background-image.JPG');
+  background-size: contain; */
 }
 

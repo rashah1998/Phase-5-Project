@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Nav/>
+      <Nav user={user} setUser={setUser} setIsAuthenticated={setIsAuthenticated}/>
       <Switch>
         <Route exact path='/'>
           <FilterBar setFilterItemType={setFilterItemType}/>

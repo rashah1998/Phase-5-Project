@@ -47,8 +47,8 @@ function Login({user, setUser, setIsAuthenticated}){
     }
 
     return(
-        <div id="login-box">
-            <h1>Log In</h1>
+        <div id="login-container">
+            <h1 id='login-title'>Log In</h1>
             {user ?
                 <div> 
                     <h3>Login successful! Welcome, {user.first_name}</h3>
@@ -56,20 +56,19 @@ function Login({user, setUser, setIsAuthenticated}){
                         <h4>Click here to Log Out</h4>
                     </Link>
                 </div> :
-                <form onSubmit={(e) => submitHandler(e)}>
-                    <div>
-                        <p>Username</p>
-                        <input type="text" id="username-login" placeholder="Enter Username" onChange={e => setUsername(e.target.value)} required></input>
-                        <p>Password</p>
-                        <input type="password" id="password-login" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} required></input>
-                        <br></br>
-                        <input type="submit" id="submit-login" value="Log In"></input>
-                        <br/>
-                        {error ? <p>{error}</p> : null}
-                        {/* {user ? <p>Login successful! Welcome, {user.first_name}</p> : null} */}
-                        <Link to='/signup' id='login-to-signup-link'>Don't have an account? Click here to sign up!</Link>
-                    </div>
-                </form>}
+                <form onSubmit={(e) => submitHandler(e)} id='login-form'>
+                    <label htmlFor="username">Username </label>
+                    <input type="text" name='username' id="username-login" placeholder="Enter Username" onChange={e => setUsername(e.target.value)} required></input>
+                    <label htmlFor="password">Password </label>
+                    <input type="password" name="password" id="password-login" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} required></input>
+                    <br></br>
+                    <input type="submit" id="submit-login" value="Log In"></input>
+                    <br/>
+                    {error ? <p id='login-error'>{error}</p> : null}
+                    {/* {user ? <p>Login successful! Welcome, {user.first_name}</p> : null} */}
+                    <Link to='/signup' id='login-to-signup-link'>Don't have an account? Click here to sign up!</Link>
+                </form>
+            }
         </div>
     )
 }
